@@ -6,7 +6,8 @@ package Entidades;
  */
 public class Producto {
     private int idProducto;
-    private String nombre;////agregar DB
+    private String nombre;
+    private String descripcion;
     private double precioActual;
     private int stock;
     private boolean estado;
@@ -22,19 +23,19 @@ public class Producto {
     }
 
     public Producto(int id, String nombre, double precioActual, int stock, boolean estado) {
-        this.id = id;
+        this.idProducto = id;
         this.nombre = nombre;
         this.precioActual = precioActual;
         this.stock = stock;
         this.estado = estado;
     }
 
-    public int getId() {
-        return id;
+    public int getIdProducto() {
+        return idProducto;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 
     public String getNombre() {
@@ -43,6 +44,14 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public double getPrecioActual() {
@@ -71,7 +80,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", precioActual=" + precioActual + ", stock=" + stock + ", estado=" + estado + '}';
+        return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precioActual=" + precioActual + ", stock=" + stock + ", estado=" + estado + '}';
     }
-    
+
 }
