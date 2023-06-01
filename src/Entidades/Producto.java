@@ -5,7 +5,7 @@ package Entidades;
  * @author Usuario
  */
 public class Producto {
-    private int id;
+    private int idProducto;
     private String nombre;////agregar DB
     private double precioActual;
     private int stock;
