@@ -15,16 +15,18 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String nombre, double precioActual, int stock, boolean estado) {
+    public Producto(String nombre, String descripcion, double precioActual, int stock, boolean estado) {
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.precioActual = precioActual;
         this.stock = stock;
         this.estado = estado;
     }
 
-    public Producto(int id, String nombre, double precioActual, int stock, boolean estado) {
-        this.idProducto = id;
+    public Producto(int idProducto, String nombre, String descripcion, double precioActual, int stock, boolean estado) {
+        this.idProducto = idProducto;
         this.nombre = nombre;
+        this.descripcion = descripcion;
         this.precioActual = precioActual;
         this.stock = stock;
         this.estado = estado;
