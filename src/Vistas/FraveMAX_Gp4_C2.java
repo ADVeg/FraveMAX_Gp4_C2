@@ -1,4 +1,4 @@
-package fravemax_gp4_c2;
+package Vistas;
 
 /**
  *
