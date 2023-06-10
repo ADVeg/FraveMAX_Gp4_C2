@@ -4,6 +4,7 @@
  */
 package Entidades;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,17 +14,23 @@ import java.util.Date;
 public class Compra {
     private int idCompra;
     private int idProveedor;
-    private date fecha;
+    private LocalDate fecha;
 
-    public Compra(int idCompra, int idProveedor, date fecha) {
+    public Compra(int idCompra, int idProveedor, LocalDate fecha) {
         this.idCompra = idCompra;
         this.idProveedor = idProveedor;
         this.fecha = fecha;
     }
 
-    public Compra(int idCompra, int idProveedor, Date fecha) {
-        throw new UnsupportedOperationException(""); //No se que poner aca
+    public Compra(int idProveedor, LocalDate fecha) {
+         this.idProveedor = idProveedor;
+         this.fecha = fecha;
     }
+
+    public Compra() {
+    }
+
+   
 
     public int getIdCompra() {
         return idCompra;
@@ -41,18 +48,15 @@ public class Compra {
         this.idProveedor = idProveedor;
     }
 
-    public date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
-    private static class date {
-
-        public date() {
-        }
+  
     }
-}
+
 
