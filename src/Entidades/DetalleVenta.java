@@ -12,6 +12,8 @@ public class DetalleVenta {
     private Producto producto;
 
     public DetalleVenta() {
+        venta=new Venta();
+        producto=new Producto();
     }
 
     public DetalleVenta(int cantidad, double precioVenta, Venta venta, Producto producto) {
