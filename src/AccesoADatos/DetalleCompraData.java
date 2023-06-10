@@ -9,47 +9,65 @@ package AccesoADatos;
  * @author Luisautrera
  */
 import Entidades.DetalleCompra;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 
 public class DetalleCompraData {
-    private final List<DetalleCompra> detalleCompras;
+    private final Connection con;
 
     public DetalleCompraData() {
-        this.detalleCompras = new ArrayList<>();
+        con = Conexion.getConexion();
     }
 
-    public void agregarDetalleCompra(int idDetalle, int cantidad, double precioCosto, int idCompra, int idProducto) {
-        DetalleCompra detalleCompra = new DetalleCompra(idDetalle, cantidad, precioCosto, idCompra, idProducto);
-        detalleCompras.add(detalleCompra);
-    }
-
-    public List<DetalleCompra> obtenerTodosLosDetallesCompra() {
-        return detalleCompras;
-    }
-
-    public DetalleCompra obtenerDetalleCompraPorId(int idDetalle) {
-        for (DetalleCompra detalleCompra : detalleCompras) {
-            if (detalleCompra.getIdDetalle() == idDetalle) {
-                return detalleCompra;
-            }
+    public void agregarDetalleCompra(DetalleCompra detalleCompra) {
+        String sql = "INSERT INTO detalle_compra(idDetalle, cantidad, precioCosto, idCompra, idProducto) VALUES (?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, detalleCompra.getIdDetalle());
+            ps.setInt(2, detalleCompra.getCantidad());
+            ps.setDouble(3, detalleCompra.getPrecioCosto());
+            ps.setInt(4, detalleCompra.getIdCompra());
+            ps.setInt(5, detalleCompra.getIdProducto());
+            ps.executeUpdate();
+            System.out.println("Detalle de compra agregado");
+        } catch (SQLException e) {
+            Logger.getLogger(DetalleCompraData.class.getName()).log(Level.SEVERE, null, e);
         }
-        return null;
     }
 
-    public void actualizarDetalleCompra(int idDetalle, int nuevaCantidad, double nuevoPrecioCosto, int nuevoIdCompra, int nuevoIdProducto) {
-        for (DetalleCompra detalleCompra : detalleCompras) {
-            if (detalleCompra.getIdDetalle() == idDetalle) {
-                detalleCompra.setCantidad(nuevaCantidad);
-                detalleCompra.setPrecioCosto(nuevoPrecioCosto);
-                detalleCompra.setIdCompra(nuevoIdCompra);
-                detalleCompra.setIdProducto(nuevoIdProducto);
-                break;
-            }
+    public void actualizarDetalleCompra(DetalleCompra detalleCompra) {
+        String sql = "UPDATE detalle_compra SET cantidad=?, precioCosto=?, idCompra=?, idProducto=? WHERE idDetalle=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, detalleCompra.getCantidad());
+            ps.setDouble(2, detalleCompra.getPrecioCosto());
+            ps.setInt(3, detalleCompra.getIdCompra());
+            ps.setInt(4, detalleCompra.getIdProducto());
+            ps.setInt(5, detalleCompra.getIdDetalle());
+            ps.executeUpdate();
+            System.out.println("Detalle de compra actualizado");
+        } catch (SQLException e) {
+            Logger.getLogger(DetalleCompraData.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
     public void eliminarDetalleCompra(int idDetalle) {
-        detalleCompras.removeIf(detalleCompra -> detalleCompra.getIdDetalle() == idDetalle);
+        String sql = "DELETE FROM detalle_compra WHERE idDetalle=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, idDetalle);
+            if (ps.executeUpdate() == 1) {
+                System.out.println("Detalle de compra eliminado");
+            } else {
+                System.out.println("Detalle de compra no encontrado");
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(DetalleCompraData.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 }
