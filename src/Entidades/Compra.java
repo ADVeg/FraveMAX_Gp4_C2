@@ -22,7 +22,7 @@ public class Compra {
     }
 
     public Compra(int idCompra, int idProveedor, Date fecha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException(""); //No se que poner aca
     }
 
     public int getIdCompra() {
