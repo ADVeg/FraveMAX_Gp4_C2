@@ -1,24 +1,27 @@
 package Entidades;
+
+import java.time.LocalDate;
+
 /**
  *
  * @author Turconi Matías
  */
 public class Venta {
     private int idVenta;
-    private int fecha;
-    private int idCiente;
+    private LocalDate fecha;
+    private Cliente Cliente;
 
     public Venta() {
     }
 
-    public Venta(int fecha) {
+    public Venta(LocalDate fecha) {
         this.fecha = fecha;
     }
 
-    public Venta(int idVenta, int fecha, int idCiente) {
+    public Venta(int idVenta, LocalDate fecha, Cliente Cliente) {
         this.idVenta = idVenta;
         this.fecha = fecha;
-        this.idCiente = idCiente;
+        this.Cliente = Cliente;
     }
 
     public int getIdVenta() {
@@ -29,20 +32,20 @@ public class Venta {
         this.idVenta = idVenta;
     }
 
-    public int getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(int fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
-    public int getIdCiente() {
-        return idCiente;
+    public Cliente getCliente() {
+        return Cliente;
     }
 
-    public void setIdCiente(int idCiente) {
-        this.idCiente = idCiente;
+    public void setCliente(Cliente Cliente) {
+        this.Cliente = Cliente;
     }
     
     
