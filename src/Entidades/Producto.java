@@ -2,7 +2,7 @@ package Entidades;
 
 /**
  *
- * @author Usuario
+ * @author Vega Alberto
  */
 public class Producto {
     private int idProducto;
