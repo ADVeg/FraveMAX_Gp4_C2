@@ -116,16 +116,16 @@ public class DetalleVentaData {
     public void modificarDetalleVenta(DetalleVenta dv){
         String sql="UPDATE detalleVenta SET cantidad=?, precioVenta=? WHERE idDetalleVent=?";
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1, dv.getCantidad());
-            ps.setDouble(2, dv.getPrecioVenta());
-            ps.setInt(3, dv.getIdDetalleVent());
-            if(ps.executeUpdate()==1){
-                System.out.println("Detalle de venta modificado");
-            }else{
-                System.out.println("Detalle de venta no encontrado");
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, dv.getCantidad());
+                ps.setDouble(2, dv.getPrecioVenta());
+                ps.setInt(3, dv.getIdDetalleVent());
+                if(ps.executeUpdate()==1){
+                    System.out.println("Detalle de venta modificado");
+                }else{
+                    System.out.println("Detalle de venta no encontrado");
+                }
             }
-            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(DetalleVentaData.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -134,14 +134,14 @@ public class DetalleVentaData {
     public void eliminarDetalleVentaPorID(int id){
         String sql="DELETE FROM detalleVenta WHERE idDetalleVent=?";
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1, id);
-            if(ps.executeUpdate()==1){
-                System.out.println("Detalle de venta eliminado");
-            }else{
-                System.out.println("Detalle de venta no encontrado");
+            try (PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                if(ps.executeUpdate()==1){
+                    System.out.println("Detalle de venta eliminado");
+                }else{
+                    System.out.println("Detalle de venta no encontrado");
+                }
             }
-            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(DetalleVentaData.class.getName()).log(Level.SEVERE, null, ex);
         }

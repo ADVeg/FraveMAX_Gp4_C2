@@ -1,9 +1,14 @@
-package accesoADatos;
+package AccesoADatos;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ *
+ * @author Turcni Matías
+ */
 public class ClienteData {
     private Connection con;
 
@@ -11,12 +16,12 @@ public class ClienteData {
         con = Conexion.getConexion();
     }
 
-    public void agregarCliente(String nombre, String direccion, String telefono) {
+    public void agregarCliente(String nombre, String domicilio, String telefono) {
         try {
-            String sql = "INSERT INTO Clientes (nombre, direccion, telefono) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO cliente (nombre, domicilio, telefono) VALUES (?, ?, ?)";
             PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, nombre);
-            ps.setString(2, direccion);
+            ps.setString(2, domicilio);
             ps.setString(3, telefono);
             ps.executeUpdate();
             System.out.println("Cliente agregado correctamente.");
@@ -25,12 +30,12 @@ public class ClienteData {
         }
     }
     
-    public void modificarCliente(int id, String nuevoNombre, String nuevaDireccion, String nuevoTelefono) {
+    public void modificarCliente(int id, String nuevoNombre, String nuevoDomicilio, String nuevoTelefono) {
         try {
-            String sql = "UPDATE Clientes SET nombre = ?, direccion = ?, telefono = ? WHERE id = ?";
+            String sql = "UPDATE Cliente SET nombre = ?, domicilio = ?, telefono = ? WHERE idCliente = ?";
             PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, nuevoNombre);
-            ps.setString(2, nuevaDireccion);
+            ps.setString(2, nuevoDomicilio);
             ps.setString(3, nuevoTelefono);
             ps.setInt(4, id);
             int filasAfectadas = ps.executeUpdate();
@@ -46,7 +51,7 @@ public class ClienteData {
     
     public void eliminarCliente(int id) {
         try {
-            String sql = "DELETE FROM Clientes WHERE id = ?";
+            String sql = "DELETE FROM cliente WHERE idCliente = ?";
             PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             int filasAfectadas = ps.executeUpdate();

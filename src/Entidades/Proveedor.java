@@ -6,7 +6,7 @@ package Entidades;
 
 /**
  *
- * @author Usuario
+ * @author Turconi Matías
  */
 public class Proveedor {
     
