@@ -70,7 +70,7 @@ public class ClienteData {
     
     public Cliente buscarID(int id){
         Cliente cliente=null;
-        String sql="SELECT * FROM cliente WHERE idVenta=?";
+        String sql="SELECT * FROM cliente WHERE idCliente=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);

@@ -47,7 +47,7 @@ public class ProductoData {
     
     public List<Producto> buscarNombre(String nom){
         List<Producto> productos=new ArrayList<>();
-        String sql="SELECT * FROM producto WHERE nombre=? AND estado=true";
+        String sql="SELECT * FROM producto WHERE nombre=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setString(1, nom);
