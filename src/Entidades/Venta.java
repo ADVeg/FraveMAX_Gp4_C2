@@ -12,6 +12,7 @@ public class Venta {
     private Cliente Cliente;
 
     public Venta() {
+        Cliente = new Cliente();
     }
 
     public Venta(LocalDate fecha) {
@@ -46,6 +47,11 @@ public class Venta {
 
     public void setCliente(Cliente Cliente) {
         this.Cliente = Cliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Venta{" + "idVenta=" + idVenta + ", fecha=" + fecha + ", Cliente=" + Cliente + '}';
     }
     
     

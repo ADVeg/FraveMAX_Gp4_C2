@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Entidades.Venta;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -58,4 +59,25 @@ public class VentaData {
                 Logger.getLogger(VentaData.class.getName()).log(Level.SEVERE,null,e);
             }
 }
+     
+     public Venta buscarID(int id){
+        Venta venta=null;
+        String sql="SELECT * FROM venta WHERE idVenta=?";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                venta=new Venta();
+                venta.setIdVenta(rs.getInt("idVenta"));
+                venta.setFecha(rs.getDate("fecha").toLocalDate());
+                venta.getCliente().setIdCliente(rs.getInt("idCliente"));
+            }else{
+                System.out.println("Producto no encontrado");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return venta;
+    }
 }
