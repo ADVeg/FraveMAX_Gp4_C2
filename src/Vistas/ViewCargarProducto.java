@@ -114,9 +114,8 @@ public class ViewCargarProducto extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jTCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
                         .addComponent(jTNombre)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTStock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                            .addComponent(jTPrecio, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(jTStock, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                        .addComponent(jTPrecio))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -150,7 +149,7 @@ public class ViewCargarProducto extends javax.swing.JInternalFrame {
                     .addComponent(jLDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBSalir)
                     .addComponent(jBGuardar))
                 .addContainerGap(15, Short.MAX_VALUE))
@@ -175,7 +174,7 @@ public class ViewCargarProducto extends javax.swing.JInternalFrame {
             msj=true;
         }}
         if(!msj){
-            Vista_FraveMAX.prod=new Producto(jTNombre.getText(),jTCategoria.getText(),jTADescripcion.getText(),Double.parseDouble(jTPrecio.getText()),Integer.parseInt(jTStock.getText()),true);
+            Vista_FraveMAX.prod=new Producto(jTNombre.getText().toUpperCase(),jTCategoria.getText().toUpperCase(),jTADescripcion.getText().toUpperCase(),Double.parseDouble(jTPrecio.getText()),Integer.parseInt(jTStock.getText()),true);
             Vista_FraveMAX.prodD.nuevoProducto(Vista_FraveMAX.prod);
             Vista_FraveMAX.prod=null;
         }

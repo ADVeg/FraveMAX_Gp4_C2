@@ -162,11 +162,11 @@ public class DetalleVentaData {
                 v.setIdVenta(rs.getInt("idVenta"));
                 detallesV.add(new DetalleVenta(rs.getInt("idDetalleVent"),rs.getInt("cantidad"),rs.getDouble("precioVenta"),v,p));
             }
+            v=null;
+            p=null;
         } catch (SQLException ex) {
             Logger.getLogger(DetalleVentaData.class.getName()).log(Level.SEVERE, null, ex);
         }
-        v=null;
-        p=null;
         return detallesV;
     }
 }

@@ -45,6 +45,7 @@ public class ViewConsultarVentas extends javax.swing.JInternalFrame {
 
             }
         ));
+        jTDatos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTDatos.setEnabled(false);
         jScrollPane1.setViewportView(jTDatos);
 
@@ -105,6 +106,13 @@ public class ViewConsultarVentas extends javax.swing.JInternalFrame {
             i++;
         }
         jTDatos.setModel(new DefaultTableModel(datos,colum));///insertar datos a la talba
+        jTDatos.getColumnModel().getColumn(0).setPreferredWidth(50);
+        jTDatos.getColumnModel().getColumn(1).setPreferredWidth(100);
+        jTDatos.getColumnModel().getColumn(2).setPreferredWidth(155);
+        jTDatos.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jTDatos.getColumnModel().getColumn(4).setPreferredWidth(120);
+        jTDatos.getColumnModel().getColumn(5).setPreferredWidth(350);
+        jTDatos.getColumnModel().getColumn(6).setPreferredWidth(80);
         Vista_FraveMAX.detventas=null;///limpiar detventas
     }
 
