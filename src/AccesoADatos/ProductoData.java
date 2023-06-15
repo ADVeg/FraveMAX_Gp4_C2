@@ -23,7 +23,7 @@ public class ProductoData {
     }
     
     public void nuevoProducto(Producto prod){
-        if(this.buscarNombre(prod.getNombre())==null){
+        if(this.buscarDescripcion(prod.getDescripcion())==null){
             String sql="INSERT INTO producto(nombre, categoria, descripcion, precioActual, stock, estado) VALUES (?,?,?,?,?,?)";
             try {
                 PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -67,6 +67,31 @@ public class ProductoData {
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                producto=new Producto();
+                producto.setIdProducto(rs.getInt("idProducto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setCategoria(rs.getString("categoria"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                producto.setPrecioActual(rs.getInt("precioActual"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setEstado(rs.getBoolean("estado"));
+            }else{
+                System.out.println("Producto no encontrado");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return producto;
+    }
+    
+    public Producto buscarDescripcion(String descrip){
+        Producto producto=null;
+        String sql="SELECT * FROM producto WHERE descripcion=?";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1, descrip);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
                 producto=new Producto();
