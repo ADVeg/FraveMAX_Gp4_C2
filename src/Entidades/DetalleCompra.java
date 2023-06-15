@@ -12,11 +12,16 @@ public class DetalleCompra {
     private int detalle;
     private int cantidad;
     private double precioCosto;
-    private int compra;
-    private int producto;
+    private Compra compra;
+    private Producto producto;
+    
 
-
-    public DetalleCompra(int detalle, int cantidad, double precioCosto, int compra, int producto) {
+    public DetalleCompra(){
+        compra= new Compra ();
+        producto= new Producto();
+    }
+    
+    public DetalleCompra(int detalle, int cantidad, double precioCosto, Compra compra, Producto producto) {
         this.detalle = detalle;
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
@@ -48,19 +53,19 @@ public class DetalleCompra {
         this.precioCosto = precioCosto;
     }
 
-   public int getCompra() {
+   public Compra getCompra() {
         return compra;
     }
 
-  public void setCompra(int compra) {
+  public void setCompra(Compra compra) {
         this.compra = compra;
     }
 
-     public int getProducto() {
+     public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(int producto) {
+    public void setProducto(Producto producto) {
         this.producto = producto;
     }
 }
