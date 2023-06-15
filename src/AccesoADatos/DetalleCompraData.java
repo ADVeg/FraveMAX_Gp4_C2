@@ -25,14 +25,14 @@ public class DetalleCompraData {
     }
 
     public void agregarDetalleCompra(DetalleCompra detalleCompra) {
-        String sql = "INSERT INTO detalle_compra(idDetalle, cantidad, precioCosto, idCompra, idProducto) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO detallecompra(Detalle, cantidad, precioCosto, Compra, Producto) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, detalleCompra.getIdDetalle());
+            ps.setInt(1, detalleCompra.getDetalle());
             ps.setInt(2, detalleCompra.getCantidad());
             ps.setDouble(3, detalleCompra.getPrecioCosto());
-            ps.setInt(4, detalleCompra.getIdCompra());
-            ps.setInt(5, detalleCompra.getIdProducto());
+            ps.setInt(4, detalleCompra.getCompra().getIdCompra());
+            ps.setInt(5, detalleCompra.getProducto().getIdProducto());
             ps.executeUpdate();
             System.out.println("Detalle de compra agregado");
         } catch (SQLException e) {
@@ -41,14 +41,14 @@ public class DetalleCompraData {
     }
 
     public void actualizarDetalleCompra(DetalleCompra detalleCompra) {
-        String sql = "UPDATE detalle_compra SET cantidad=?, precioCosto=?, idCompra=?, idProducto=? WHERE idDetalle=?";
+        String sql = "UPDATE detallecompra SET cantidad=?, precioCosto=?, idCompra=?, idProducto=? WHERE idDetalle=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, detalleCompra.getCantidad());
             ps.setDouble(2, detalleCompra.getPrecioCosto());
-            ps.setInt(3, detalleCompra.getIdCompra());
-            ps.setInt(4, detalleCompra.getIdProducto());
-            ps.setInt(5, detalleCompra.getIdDetalle());
+            ps.setInt(3, detalleCompra.getCompra().getIdCompra());
+            ps.setInt(4, detalleCompra.getProducto().getIdProducto());
+            ps.setInt(5, detalleCompra.getDetalle());
             ps.executeUpdate();
             System.out.println("Detalle de compra actualizado");
         } catch (SQLException e) {
@@ -57,7 +57,7 @@ public class DetalleCompraData {
     }
 
     public void eliminarDetalleCompra(int idDetalle) {
-        String sql = "DELETE FROM detalle_compra WHERE idDetalle=?";
+        String sql = "DELETE FROM detallecompra WHERE idDetalle=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, idDetalle);
