@@ -9,26 +9,27 @@ package Entidades;
  * @author LuisaUtrera
  */
 public class DetalleCompra {
-    private int idDetalle;
+    private int detalle;
     private int cantidad;
     private double precioCosto;
-    private int idCompra;
-    private int idProducto;
+    private int compra;
+    private int producto;
 
-    public DetalleCompra(int idDetalle, int cantidad, double precioCosto, int idCompra, int idProducto) {
-        this.idDetalle = idDetalle;
+
+    public DetalleCompra(int detalle, int cantidad, double precioCosto, int compra, int producto) {
+        this.detalle = detalle;
         this.cantidad = cantidad;
         this.precioCosto = precioCosto;
-        this.idCompra = idCompra;
-        this.idProducto = idProducto;
+        this.compra = compra;
+        this.producto = producto;
     }
 
-    public int getIdDetalle() {
-        return idDetalle;
+    public int getDetalle() {
+        return detalle;
     }
-
-    public void setIdDetalle(int idDetalle) {
-        this.idDetalle = idDetalle;
+    
+    public void setDetalle(int detalle) {
+        this.detalle = detalle;
     }
 
     public int getCantidad() {
@@ -47,19 +48,19 @@ public class DetalleCompra {
         this.precioCosto = precioCosto;
     }
 
-    public int getIdCompra() {
-        return idCompra;
+   public int getCompra() {
+        return compra;
     }
 
-    public void setIdCompra(int idCompra) {
-        this.idCompra = idCompra;
+  public void setCompra(int compra) {
+        this.compra = compra;
     }
 
-    public int getIdProducto() {
-        return idProducto;
+     public int getProducto() {
+        return producto;
     }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public void setProducto(int producto) {
+        this.producto = producto;
     }
 }
