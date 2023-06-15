@@ -13,7 +13,7 @@ public class ViewCargarProducto extends javax.swing.JInternalFrame {
      * Creates new form ViewCargarProducto
      */
     public ViewCargarProducto() {
-        super("");
+        super("CARGAR PRODUCTO");
         initComponents();
     }
 
