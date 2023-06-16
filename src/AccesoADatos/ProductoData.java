@@ -181,9 +181,9 @@ public class ProductoData {
         }
     }
     
-    public List<Producto> productosEnAlta(){
+    public List<Producto> productos(){
         List<Producto> productos=new ArrayList<>();
-        String sql="SELECT * FROM producto WHERE estado=true";
+        String sql="SELECT * FROM producto";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
@@ -196,18 +196,5 @@ public class ProductoData {
         return productos;
     }
     
-    public List<Producto> productosEnBaja(){
-        List<Producto> productos=new ArrayList<>();
-        String sql="SELECT * FROM producto WHERE estado=false";
-        try {
-            PreparedStatement ps=con.prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();
-            while(rs.next()){
-                productos.add(new Producto(rs.getInt("idProducto"),rs.getString("nombre"),rs.getString("categoria"),rs.getString("descripcion"),rs.getDouble("precioActual"),rs.getInt("stock"),rs.getBoolean("estado")));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductoData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return productos;
-    }
+   
 }
