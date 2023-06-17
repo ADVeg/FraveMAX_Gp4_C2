@@ -9,6 +9,7 @@ import Entidades.Cliente;
 import Entidades.DetalleVenta;
 import Entidades.Producto;
 import Entidades.Venta;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
@@ -27,6 +28,12 @@ public class viewRegVenta extends javax.swing.JInternalFrame {
     
     public viewRegVenta() {
         initComponents();
+        cargarComboCliente();
+        cargarComboProd();
+        LocalDate fecha=LocalDate.now();
+        jCheckEstado.setMaxSelectableDate(Date.valueOf(fecha));
+        jCheckEstado.setMinSelectableDate(Date.valueOf(fecha));
+        jCheckEstado.getDateEditor().setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -50,8 +57,6 @@ public class viewRegVenta extends javax.swing.JInternalFrame {
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Seleccine un producto:");
-
-        jCheckEstado.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Fecha de venta:");
@@ -157,7 +162,6 @@ public class viewRegVenta extends javax.swing.JInternalFrame {
             }else{
                 JOptionPane.showMessageDialog(null, "Cantidad insuficiente");
             }
-            
             Limpiar();
         
     }//GEN-LAST:event_jBotEnviarActionPerformed
@@ -177,7 +181,7 @@ public class viewRegVenta extends javax.swing.JInternalFrame {
     
     
     private void Limpiar() {
-        
+        jTextCant.setText("");
     }
     
     
@@ -185,7 +189,7 @@ public class viewRegVenta extends javax.swing.JInternalFrame {
     private javax.swing.JButton jBotEnviar;
     private javax.swing.JButton jBotSalir;
     private javax.swing.JComboBox<Cliente> jBoxCliente;
-    private javax.swing.JComboBox<String> jBoxProd;
+    private javax.swing.JComboBox<Producto> jBoxProd;
     private com.toedter.calendar.JDateChooser jCheckEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -202,8 +206,8 @@ public class viewRegVenta extends javax.swing.JInternalFrame {
     }
     
     private void cargarComboProd() {
-        for (Cliente cliente : Vista_FraveMAX.cliD.clientes()) {
-            jBoxCliente.addItem(cliente);
+        for (Producto producto : Vista_FraveMAX.prodD.productos()) {
+            jBoxProd.addItem(producto);
         }
     }
     

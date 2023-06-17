@@ -17,6 +17,7 @@ public class Cliente {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
+        this.estado = estado;
     }
 
     public Cliente() {
@@ -27,6 +28,7 @@ public class Cliente {
         this.nombre = nombre;
         this.domicilio = domicilio;
         this.telefono = telefono;
+        this.estado = estado;
     }
 
     public Cliente(int parseInt, String text, String text0) {
@@ -79,7 +81,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "idCliente=" + idCliente + ", nombre=" + nombre + ", domicilio=" + domicilio + ", telefono=" + telefono + ", estado=" + estado + '}';
+        return nombre;
     }
     
     
