@@ -28,12 +28,10 @@ public class VentaData {
     }
     
      public void registrarVenta(Cliente clien, LocalDate fechaVenta) {
-            String query = "INSERT INTO ventas ( cliente, fecha) VALUES ( ?, ?)";
+            String query = "INSERT INTO venta ( idCliente, fecha) VALUES ( ?, ?)";
             try (PreparedStatement ps = con.prepareStatement(query)) {
             ps.setInt(1, clien.getIdCliente());
             ps.setDate(2, Date.valueOf(fechaVenta));
-            
-
             ps.executeUpdate();
             System.out.println("Venta registrada correctamente.");
             } catch (SQLException e) {

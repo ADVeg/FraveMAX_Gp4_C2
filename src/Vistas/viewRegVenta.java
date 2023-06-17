@@ -62,6 +62,11 @@ public class viewRegVenta extends javax.swing.JInternalFrame {
         jLabel3.setText("Fecha de venta:");
 
         jBotSalir.setText("Salir");
+        jBotSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBotSalirActionPerformed(evt);
+            }
+        });
 
         jBotEnviar.setText("Enviar");
         jBotEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,12 +164,17 @@ public class viewRegVenta extends javax.swing.JInternalFrame {
             Vista_FraveMAX.prodD.modificarProducto(Vista_FraveMAX.prod);
             Vista_FraveMAX.vent=null;
             Vista_FraveMAX.prod=null;
+            JOptionPane.showMessageDialog(null, "Venta Realizada");
             }else{
                 JOptionPane.showMessageDialog(null, "Cantidad insuficiente");
             }
             Limpiar();
         
     }//GEN-LAST:event_jBotEnviarActionPerformed
+
+    private void jBotSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBotSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBotSalirActionPerformed
 
     
     private int buscarVenta(){
