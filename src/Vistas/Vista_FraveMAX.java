@@ -39,7 +39,8 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
     public static List<Proveedor> proveedores=null;
     public static Venta vent=null;
     public static List<DetalleVenta> detventas=null;
-    
+    public static List<Producto> productos=null;   
+
     public Vista_FraveMAX() {
         initComponents();
     }
