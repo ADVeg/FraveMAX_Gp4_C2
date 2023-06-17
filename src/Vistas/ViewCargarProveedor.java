@@ -124,6 +124,7 @@ public class ViewCargarProveedor extends javax.swing.JInternalFrame {
         if(!msj){msj=verificarCampos(jTTelefono);}
         if(!msj){
             Vista_FraveMAX.provD.nuevoProveedor(new Proveedor(jTRasonSocial.getText(),jTDomicilio.getText(),Long.parseLong(jTTelefono.getText())));
+            Limpiar();
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -141,6 +142,11 @@ public class ViewCargarProveedor extends javax.swing.JInternalFrame {
             tx.requestFocus();
             return true;
         }else{return false;}
+    }
+    private void Limpiar(){
+        jTDomicilio.setText("");
+        jTRasonSocial.setText("");
+        jTTelefono.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

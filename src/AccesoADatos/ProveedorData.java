@@ -62,7 +62,7 @@ public class ProveedorData {
                 prov.setTelefono(rs.getLong("telefono"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProveedorData.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProveedorData.class.getName()).log(Level.SEVERE, null, ex.getMessage());
         }
         sql=null;
         return prov;

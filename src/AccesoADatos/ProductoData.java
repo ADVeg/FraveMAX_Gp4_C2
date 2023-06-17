@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,13 +36,14 @@ public class ProductoData {
                 ps.setBoolean(6, prod.isEstado());
                 if(ps.executeUpdate()>=0){
                     System.out.println("Producto Cargado");
-//                    JOptionPane.showMessageDialog(null, "Producto Cargado");
+                    JOptionPane.showMessageDialog(null, "Producto Cargado");
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(ProductoData.class.getName()).log(Level.SEVERE, null, ex.getMessage());
             }
         }else{
             System.out.println("Producto ya cargado");
+            JOptionPane.showMessageDialog(null, "Descripcion Repetida");
         }
     }
     

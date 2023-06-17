@@ -72,6 +72,7 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
         jConsVenta = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMICargar = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -170,6 +171,14 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
         });
         jMenu8.add(jMICargar);
 
+        jMenuItem5.setText("Inventario");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem5);
+
         jMenuBar1.add(jMenu8);
 
         jMenu9.setText("Proveedores");
@@ -209,19 +218,19 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jModClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jModClienteActionPerformed
-//        Escritorio.removeAll();
-//        Escritorio.repaint();
-//        viewModCliente vmc=new viewModCliente();
-//        vmc.setVisible(true);
-//        Escritorio.add(vmc); 
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        viewModCliente vmc=new viewModCliente();
+        vmc.setVisible(true);
+        Escritorio.add(vmc); 
     }//GEN-LAST:event_jModClienteActionPerformed
 
     private void jElimClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jElimClienteActionPerformed
-//        Escritorio.removeAll();
-//        Escritorio.repaint();
-//        viewElimCliente vec=new viewElimCliente();
-//        vec.setVisible(true);
-//        Escritorio.add(vec);
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        viewElimCliente vec=new viewElimCliente();
+        vec.setVisible(true);
+        Escritorio.add(vec);
     }//GEN-LAST:event_jElimClienteActionPerformed
 
     private void jConsVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsVentaActionPerformed
@@ -233,19 +242,19 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
     }//GEN-LAST:event_jConsVentaActionPerformed
 
     private void jAgrClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAgrClienteActionPerformed
-//        Escritorio.removeAll();
-//        Escritorio.repaint();
-//        viewAgregarCliente vac=new viewAgregarCliente();
-//        vac.setVisible(true);
-//        Escritorio.add(vac);
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        viewAgregarCliente vac=new viewAgregarCliente();
+        vac.setVisible(true);
+        Escritorio.add(vac);
     }//GEN-LAST:event_jAgrClienteActionPerformed
 
     private void jRegVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegVentaActionPerformed
-//        Escritorio.removeAll();
-//        Escritorio.repaint();
-//        viewRegVenta vrv=new viewRegVenta();
-//        vrv.setVisible(true);
-//        Escritorio.add(vrv);
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        viewRegVenta vrv=new viewRegVenta();
+        vrv.setVisible(true);
+        Escritorio.add(vrv);
     }//GEN-LAST:event_jRegVentaActionPerformed
 
     private void jMICargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMICargarActionPerformed
@@ -271,6 +280,14 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
         vRPP.setVisible(true);
         Escritorio.add(vRPP);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ViewConsultarInventario vRPP=new ViewConsultarInventario();
+        vRPP.setVisible(true);
+        Escritorio.add(vRPP);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -330,6 +347,7 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jModCliente;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JMenuItem jRegVenta;

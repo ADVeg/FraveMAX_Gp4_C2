@@ -188,6 +188,7 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
             Vista_FraveMAX.prodD.modificarProducto(Vista_FraveMAX.prod);
             Vista_FraveMAX.comp=null;
             Vista_FraveMAX.prod=null;
+            JOptionPane.showMessageDialog(this, "Pedido Realizado");
         }
     }//GEN-LAST:event_jBRealizarPedidoActionPerformed
 

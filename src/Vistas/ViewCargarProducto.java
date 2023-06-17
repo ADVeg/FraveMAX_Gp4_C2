@@ -169,7 +169,6 @@ public class ViewCargarProducto extends javax.swing.JInternalFrame {
         if(!msj){msj=verificarCampos(jTPrecio);}
         if(!msj){msj=verificarCampos(jTStock);}
         if(!msj){if(jTADescripcion.getText().equalsIgnoreCase("")){
-            JOptionPane.showMessageDialog(null, "Completar Campo");
             jTADescripcion.requestFocus();
             msj=true;
         }}
@@ -177,6 +176,8 @@ public class ViewCargarProducto extends javax.swing.JInternalFrame {
             Vista_FraveMAX.prod=new Producto(jTNombre.getText().toUpperCase(),jTCategoria.getText().toUpperCase(),jTADescripcion.getText().toUpperCase(),Double.parseDouble(jTPrecio.getText()),Integer.parseInt(jTStock.getText()),true);
             Vista_FraveMAX.prodD.nuevoProducto(Vista_FraveMAX.prod);
             Vista_FraveMAX.prod=null;
+            JOptionPane.showMessageDialog(this, "Producto Cargado");
+            Limpiar();
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
@@ -218,6 +219,14 @@ public class ViewCargarProducto extends javax.swing.JInternalFrame {
             evt.consume();
             tx.requestFocus();
         }
+    }
+    
+    private void Limpiar(){
+        jTADescripcion.setText("");
+        jTCategoria.setText("");
+        jTNombre.setText("");
+        jTPrecio.setText("");
+        jTStock.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
