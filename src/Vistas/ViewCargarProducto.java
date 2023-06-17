@@ -176,7 +176,6 @@ public class ViewCargarProducto extends javax.swing.JInternalFrame {
             Vista_FraveMAX.prod=new Producto(jTNombre.getText().toUpperCase(),jTCategoria.getText().toUpperCase(),jTADescripcion.getText().toUpperCase(),Double.parseDouble(jTPrecio.getText()),Integer.parseInt(jTStock.getText()),true);
             Vista_FraveMAX.prodD.nuevoProducto(Vista_FraveMAX.prod);
             Vista_FraveMAX.prod=null;
-            JOptionPane.showMessageDialog(this, "Producto Cargado");
             Limpiar();
         }
     }//GEN-LAST:event_jBGuardarActionPerformed

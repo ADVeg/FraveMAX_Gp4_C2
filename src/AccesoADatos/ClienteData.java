@@ -34,6 +34,7 @@ public class ClienteData {
             ps.setBoolean(4, clien.isEstado());
             ps.executeUpdate();
             System.out.println("Cliente agregado correctamente.");
+            JOptionPane.showMessageDialog(null, "Cliente agregado correctamente");
         } catch (SQLException e) {
             System.out.println("Error al agregar el cliente: " + e.getMessage());
         }
@@ -54,8 +55,10 @@ public class ClienteData {
             int i = ps.executeUpdate();
             if (i > 0) {
                 System.out.println("Cliente modificado correctamente.");
+                JOptionPane.showMessageDialog(null,"Cliente modificado correctamente.");
             } else {
                 System.out.println("No se encontró el cliente");
+                JOptionPane.showMessageDialog(null,"No se encontró el cliente");
             }
         } catch (SQLException e) {
             System.out.println("Error al modificar el cliente: " + e.getMessage());
@@ -80,7 +83,7 @@ public class ClienteData {
     
     public Cliente buscarID(int id){
         Cliente cliente=null;
-        String sql="SELECT * FROM cliente WHERE idVenta=? and estado=true";
+        String sql="SELECT * FROM cliente WHERE idCliente=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);

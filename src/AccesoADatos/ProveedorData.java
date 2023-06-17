@@ -36,7 +36,6 @@ public class ProveedorData {
                 ps.executeUpdate();
                 System.out.println("Proveedor Cargado");
                 JOptionPane.showMessageDialog(null, "Proveedor Cargado");
-                con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(ProductoData.class.getName()).log(Level.SEVERE, null, ex.getMessage());
             }

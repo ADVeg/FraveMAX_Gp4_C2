@@ -65,7 +65,7 @@ public class ProductoData {
     
     public Producto buscarID(int id){
         Producto producto=null;
-        String sql="SELECT * FROM producto WHERE idProducto=? AND estado=true";
+        String sql="SELECT * FROM producto WHERE idProducto=?";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ps.setInt(1, id);
