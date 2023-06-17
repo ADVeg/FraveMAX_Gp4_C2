@@ -1,4 +1,7 @@
 package Entidades;
+
+import java.time.LocalDate;
+
 /**
  *
  * @author Turconi Matías
@@ -27,9 +30,13 @@ public class Cliente {
     }
 
     public Cliente(int parseInt, String text, String text0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
-    
+
+    public Cliente(LocalDate toLocalDate) {
+       
+    }
+
     public int getIdCliente() {
         return idCliente;
     }

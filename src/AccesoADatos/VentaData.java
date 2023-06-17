@@ -1,5 +1,6 @@
 package AccesoADatos;
 
+import Entidades.Cliente;
 import Entidades.Venta;
 import java.sql.Connection;
 import java.sql.Date;
@@ -8,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,10 +27,10 @@ public class VentaData {
         con = Conexion.getConexion();
     }
     
-     public void registrarVenta(int cliente, LocalDate fechaVenta) {
+     public void registrarVenta(Cliente clien, LocalDate fechaVenta) {
             String query = "INSERT INTO ventas ( cliente, fecha_venta) VALUES ( ?, ?)";
             try (PreparedStatement ps = con.prepareStatement(query)) {
-            ps.setInt(1, cliente);
+            ps.setInt(1, clien.getIdCliente());
             ps.setDate(2, Date.valueOf(fechaVenta));
             
 
@@ -60,7 +63,7 @@ public class VentaData {
             }
 }
      
-     public Venta buscarID(int id){
+    public Venta buscarID(int id){
         Venta venta=null;
         String sql="SELECT * FROM venta WHERE idVenta=?";
         try {
@@ -80,4 +83,22 @@ public class VentaData {
         }
         return venta;
     }
+    
+    public List<Venta> venta(){
+        List<Venta> venta=new ArrayList<>();
+        String sql="SELECT * FROM venta";
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                Cliente clien=new Cliente();
+                clien.setIdCliente(rs.getInt("idCliente"));
+                venta.add(new Venta(rs.getInt("idVenta"),rs.getDate("fecha").toLocalDate(),clien));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductoData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return venta;
+    }
+     
 }
