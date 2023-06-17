@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package AccesoADatos;
 
 /**
@@ -9,6 +5,7 @@ package AccesoADatos;
  * @author LuisaUtrera
  */
 import Entidades.Compra;
+import Entidades.Proveedor;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,9 +14,12 @@ import java.sql.PreparedStatement;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompraData {
     private final Connection con;
+    private List<Compra> compras;
 
     public CompraData() {
         con = Conexion.getConexion();
@@ -30,7 +30,7 @@ public class CompraData {
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, compra.getIdCompra());
-            ps.setInt(2, compra.getIdProveedor());
+            ps.setInt(2, compra.getProveedor().getIdProveedor());
             ps.setDate(3, Date.valueOf(compra.getFecha()));
             ps.executeUpdate();
             System.out.println("Compra agregada");
@@ -64,7 +64,7 @@ public class CompraData {
             if (rs.next()) {
                 compra = new Compra();
                 compra.setIdCompra(rs.getInt("idCompra"));
-                compra.setIdProveedor(rs.getInt("idProveedor"));
+                compra.getProveedor().setIdProveedor(rs.getInt("idProveedor"));
                 compra.setFecha(rs.getDate("fecha").toLocalDate());
             } else {
                 System.out.println("Compra no encontrada");
@@ -75,6 +75,24 @@ public class CompraData {
         return compra;
     }
 
- 
-
+    public List<Compra> compras(){
+        compras=null;
+        String sql = "SELECT * FROM compra";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            compras=new ArrayList<>();
+            Proveedor prov;
+            while(rs.next()){
+                prov=new Proveedor();
+                prov.setIdProveedor(rs.getInt("idProveedor"));
+                compras.add(new Compra(rs.getInt("idCompra"),prov,rs.getDate("fecha").toLocalDate()));
+                prov=null;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return compras;
+    }
+    
 }

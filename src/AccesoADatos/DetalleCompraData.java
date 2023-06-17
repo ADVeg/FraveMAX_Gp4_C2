@@ -25,10 +25,10 @@ public class DetalleCompraData {
     }
 
     public void agregarDetalleCompra(DetalleCompra detalleCompra) {
-        String sql = "INSERT INTO detallecompra(Detalle, cantidad, precioCosto, Compra, Producto) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO detallecompra(idDetalle, cantidad, precioCosto, idCompra, idProducto) VALUES (?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, detalleCompra.getDetalle());
+            ps.setInt(1, detalleCompra.getIdDetalle());
             ps.setInt(2, detalleCompra.getCantidad());
             ps.setDouble(3, detalleCompra.getPrecioCosto());
             ps.setInt(4, detalleCompra.getCompra().getIdCompra());
@@ -48,7 +48,7 @@ public class DetalleCompraData {
             ps.setDouble(2, detalleCompra.getPrecioCosto());
             ps.setInt(3, detalleCompra.getCompra().getIdCompra());
             ps.setInt(4, detalleCompra.getProducto().getIdProducto());
-            ps.setInt(5, detalleCompra.getDetalle());
+            ps.setInt(5, detalleCompra.getIdDetalle());
             ps.executeUpdate();
             System.out.println("Detalle de compra actualizado");
         } catch (SQLException e) {

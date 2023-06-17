@@ -31,6 +31,7 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
     public static VentaData ventD=new VentaData();
     public static Cliente clien=null;
     public static Compra comp=null;
+    public static List<Compra> compras=null;
     public static DetalleCompra detCom=null;
     public static DetalleVenta detVen=null;
     public static Producto prod=null;

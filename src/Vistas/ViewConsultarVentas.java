@@ -14,7 +14,7 @@ public class ViewConsultarVentas extends javax.swing.JInternalFrame {
      * Creates new form ConsultarVentas
      */
     public ViewConsultarVentas() {
-        super("VENTAS");
+        super("VENTAS REALIZADAS");
         initComponents();
         cargarTabla();
     }

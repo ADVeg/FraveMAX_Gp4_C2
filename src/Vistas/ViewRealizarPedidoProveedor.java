@@ -4,15 +4,18 @@
  */
 package Vistas;
 
+import Entidades.Compra;
+import Entidades.DetalleCompra;
 import Entidades.Producto;
 import Entidades.Proveedor;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Usuario
+ * @author Vega Alberto
  */
 public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
 
@@ -20,6 +23,7 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
      * Creates new form ViewRealizarPedidoProveedor
      */
     public ViewRealizarPedidoProveedor() {
+        super("REALIZAR PEDIDO");
         initComponents();
         LocalDate fecha=LocalDate.now();
         jDCFecha.setMaxSelectableDate(Date.valueOf(fecha));
@@ -46,8 +50,8 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
         jTCantidad = new javax.swing.JTextField();
         jDCFecha = new com.toedter.calendar.JDateChooser();
         jLCantidad = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
+        jBRealizarPedido = new javax.swing.JButton();
 
         jLProveedores.setText("PROVEEDORES");
 
@@ -63,17 +67,17 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
 
         jLCantidad.setText("Cantidad");
 
-        jButton1.setText("SALIR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBSalir.setText("SALIR");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBSalirActionPerformed(evt);
             }
         });
 
-        jButton2.setText("REALIZAR PEDIDO");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBRealizarPedido.setText("REALIZAR PEDIDO");
+        jBRealizarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBRealizarPedidoActionPerformed(evt);
             }
         });
 
@@ -83,32 +87,33 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(78, 78, 78)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDCFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
                         .addComponent(jLProveedores)
                         .addGap(18, 18, 18)
-                        .addComponent(jCBProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jCBProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDCFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jCBProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(122, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCBProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jBRealizarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
@@ -135,17 +140,17 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
                     .addComponent(jLFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBSalir)
+                    .addComponent(jBRealizarPedido))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jTCantidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTCantidadKeyTyped
         if((evt.getKeyChar()<48||evt.getKeyChar()>57)&&evt.getKeyChar()!=8){
@@ -155,8 +160,16 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jTCantidadKeyTyped
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBRealizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRealizarPedidoActionPerformed
         boolean msj=false;
+        if(jCBProveedores.getItemCount()==0){
+            JOptionPane.showMessageDialog(null, "Cargar un proveedor");
+            msj=true;
+        }
+        if(jCBProductos.getItemCount()==0){
+            JOptionPane.showMessageDialog(null, "Cargar un producto");
+            msj=true;
+        }
         if(!msj){msj=verificarCampos(jTCantidad);}
         if(!msj){
             if(jDCFecha.getDate()==null){
@@ -166,10 +179,29 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
             }
         }
         if(!msj){
-            ///completar
+            Vista_FraveMAX.comD.agregarCompra(new Compra((Proveedor)jCBProveedores.getSelectedItem(),jDCFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
+            Vista_FraveMAX.comp=new Compra(buscarCompra(),(Proveedor)jCBProveedores.getSelectedItem(),jDCFecha.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            Vista_FraveMAX.prod=(Producto)jCBProductos.getSelectedItem();
+            double precio=Vista_FraveMAX.prod.getPrecioActual()*Integer.parseInt(jTCantidad.getText());
+            Vista_FraveMAX.detComD.agregarDetalleCompra(new DetalleCompra(Integer.parseInt(jTCantidad.getText()),precio,Vista_FraveMAX.comp,Vista_FraveMAX.prod));
+            Vista_FraveMAX.prod.setStock(Vista_FraveMAX.prod.getStock()+Integer.parseInt(jTCantidad.getText()));
+            Vista_FraveMAX.prodD.modificarProducto(Vista_FraveMAX.prod);
+            Vista_FraveMAX.comp=null;
+            Vista_FraveMAX.prod=null;
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBRealizarPedidoActionPerformed
 
+    private int buscarCompra(){
+        Vista_FraveMAX.compras=Vista_FraveMAX.comD.compras();
+        int id[]=new int[Vista_FraveMAX.compras.size()];
+        int i=0;
+        for (Compra compra : Vista_FraveMAX.compras) {
+            id[i]=compra.getIdCompra();
+            i++;
+        }
+        return id[i-1];
+    }
+    
     private boolean verificarCampos(javax.swing.JTextField tx){
         if(tx.getText().equalsIgnoreCase("")){
             JOptionPane.showMessageDialog(null, "Completar Campo");
@@ -182,14 +214,14 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
         for (Proveedor Prov : Vista_FraveMAX.provD.Proveedores()) {
             jCBProveedores.addItem(Prov);
         }
-//        for (Object object : Vista_FraveMAX) {
-//            
-//        }
+        for (Producto prod : Vista_FraveMAX.prodD.productos()) {
+            jCBProductos.addItem(prod);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBRealizarPedido;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<Producto> jCBProductos;
     private javax.swing.JComboBox<Proveedor> jCBProveedores;
     private com.toedter.calendar.JDateChooser jDCFecha;

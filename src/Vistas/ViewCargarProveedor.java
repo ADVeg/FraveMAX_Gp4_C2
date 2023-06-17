@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package Vistas;
 
 import Entidades.Proveedor;
@@ -9,7 +5,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Usuario
+ * @author Vega Alberto
  */
 public class ViewCargarProveedor extends javax.swing.JInternalFrame {
 
@@ -17,6 +13,7 @@ public class ViewCargarProveedor extends javax.swing.JInternalFrame {
      * Creates new form ViewCargarProveedor
      */
     public ViewCargarProveedor() {
+        super("CARGAR PROVEEDOR");
         initComponents();
     }
 
