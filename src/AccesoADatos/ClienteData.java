@@ -153,7 +153,7 @@ public class ClienteData {
     
     public List<Cliente> clientes(){
         List<Cliente> clientes=new ArrayList<>();
-        String sql="SELECT * FROM cliente";
+        String sql="SELECT * FROM cliente WHERE estado=true";
         try {
             PreparedStatement ps=con.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
