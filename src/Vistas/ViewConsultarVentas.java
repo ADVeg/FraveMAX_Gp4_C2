@@ -62,7 +62,7 @@ public class ViewConsultarVentas extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 961, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1041, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -87,9 +87,9 @@ public class ViewConsultarVentas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void cargarTabla(){
-        String colum[]={"VENTA","FECHA","CLIENTE","TELEFONO","PRODUCTO","DESCRIPCION","PRECIO"};///titulo tabla(columnas)
+        String colum[]={"VENTA","FECHA","CLIENTE","TELEFONO","PRODUCTO","DESCRIPCION","CANTIDAD","TOTAL"};///titulo tabla(columnas)
         Vista_FraveMAX.detventas/*variable arraylist detalles ventas*/=Vista_FraveMAX.detVenD.detallesDeVenta();////obtener detalle ventas base de datos
-        String datos[][]=new String[Vista_FraveMAX.detventas.size()]/*cantidad de filas(todas las ventas)*/[7]/*cantidad de columnas titulo(linea 89)*/;
+        String datos[][]=new String[Vista_FraveMAX.detventas.size()]/*cantidad de filas(todas las ventas)*/[8]/*cantidad de columnas titulo(linea 89)*/;
         int i=0;
         for (DetalleVenta detventa : Vista_FraveMAX.detventas) {///guardar datos obtenidos en la tabla
             detventa.setProducto(Vista_FraveMAX.prodD.buscarID(detventa.getProducto().getIdProducto()));///completar datos objeto producto
@@ -102,7 +102,8 @@ public class ViewConsultarVentas extends javax.swing.JInternalFrame {
             datos[i][3]=detventa.getVenta().getCliente().getTelefono();
             datos[i][4]=detventa.getProducto().getNombre();
             datos[i][5]=detventa.getProducto().getDescripcion();
-            datos[i][6]=detventa.getPrecioVenta()+"";
+            datos[i][6]=detventa.getCantidad()+"";
+            datos[i][7]=detventa.getPrecioVenta()+"";
             i++;
         }
         jTDatos.setModel(new DefaultTableModel(datos,colum));///insertar datos a la talba
@@ -113,6 +114,7 @@ public class ViewConsultarVentas extends javax.swing.JInternalFrame {
         jTDatos.getColumnModel().getColumn(4).setPreferredWidth(120);
         jTDatos.getColumnModel().getColumn(5).setPreferredWidth(350);
         jTDatos.getColumnModel().getColumn(6).setPreferredWidth(80);
+        jTDatos.getColumnModel().getColumn(7).setPreferredWidth(80);
         Vista_FraveMAX.detventas=null;///limpiar detventas
     }
 
