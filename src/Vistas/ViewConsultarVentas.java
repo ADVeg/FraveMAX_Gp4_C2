@@ -102,7 +102,7 @@ public class ViewConsultarVentas extends javax.swing.JInternalFrame {
             datos[i][3]=detventa.getVenta().getCliente().getTelefono();
             datos[i][4]=detventa.getProducto().getNombre();
             datos[i][5]=detventa.getProducto().getDescripcion();
-            datos[i][6]=detventa.getProducto().getPrecioActual()+"";
+            datos[i][6]=detventa.getPrecioVenta()+"";
             i++;
         }
         jTDatos.setModel(new DefaultTableModel(datos,colum));///insertar datos a la talba
