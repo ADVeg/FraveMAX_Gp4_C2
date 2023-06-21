@@ -76,6 +76,8 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
         jMenu9 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jMIEliminarProveedor = new javax.swing.JMenuItem();
+        jMModificarProveedor = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar2.add(jMenu1);
@@ -199,6 +201,22 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
         });
         jMenu9.add(jMenuItem4);
 
+        jMIEliminarProveedor.setText("Eliminar Proveedor");
+        jMIEliminarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMIEliminarProveedorActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMIEliminarProveedor);
+
+        jMModificarProveedor.setText("Modificar Proveedor");
+        jMModificarProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMModificarProveedorActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMModificarProveedor);
+
         jMenuBar1.add(jMenu9);
 
         setJMenuBar(jMenuBar1);
@@ -289,6 +307,22 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
         Escritorio.add(vRPP);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void jMIEliminarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMIEliminarProveedorActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ViewEliminarProveedor vEP=new ViewEliminarProveedor();
+        vEP.setVisible(true);
+        Escritorio.add(vEP);
+    }//GEN-LAST:event_jMIEliminarProveedorActionPerformed
+
+    private void jMModificarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMModificarProveedorActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        ViewModificarProveedor vMP=new ViewModificarProveedor();
+        vMP.setVisible(true);
+        Escritorio.add(vMP);
+    }//GEN-LAST:event_jMModificarProveedorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -330,6 +364,8 @@ public class Vista_FraveMAX extends javax.swing.JFrame {
     private javax.swing.JMenuItem jConsVenta;
     private javax.swing.JMenuItem jElimCliente;
     private javax.swing.JMenuItem jMICargar;
+    private javax.swing.JMenuItem jMIEliminarProveedor;
+    private javax.swing.JMenuItem jMModificarProveedor;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

@@ -212,7 +212,7 @@ public class ViewRealizarPedidoProveedor extends javax.swing.JInternalFrame {
     }
     
     private void cargarProveedoresYProductos(){
-        for (Proveedor Prov : Vista_FraveMAX.provD.Proveedores()) {
+        for (Proveedor Prov : Vista_FraveMAX.provD.Proveedores("",true)) {
             jCBProveedores.addItem(Prov);
         }
         for (Producto prod : Vista_FraveMAX.prodD.productos()) {

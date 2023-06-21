@@ -67,15 +67,56 @@ public class ProveedorData {
         return prov;
     }
 
-    public List<Proveedor> Proveedores(){
+    public void Modificar(Proveedor prov){
+        try {
+            String sql = "UPDATE proveedor SET rasonSocial=?, domicilio=?, telefono=?, estado=? WHERE idProveedor = ?";
+            PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, prov.getRasonSocial());
+            ps.setString(2, prov.getDomicilio());
+            ps.setLong(3, prov.getTelefono());
+            ps.setBoolean(4, prov.isEstado());
+            ps.setInt(5, prov.getIdProveedor());
+            int i = ps.executeUpdate();
+            if (i > 0) {
+                System.out.println("Proveedor modificado");
+                JOptionPane.showMessageDialog(null, "Proveedor modificado");
+            } else {
+                System.out.println("No se encontró proveedor");
+                JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al modificar el proveedor: " + e.getMessage());
+        }
+    }
+    
+    public void Baja(int id){
+        try {
+            String sql = "UPDATE proveedor SET estado=false WHERE idProveedor = ?";
+            PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, id);
+            int i = ps.executeUpdate();
+            if (i > 0) {
+                System.out.println("Proveedor eliminado");
+                JOptionPane.showMessageDialog(null, "Proveedor eliminado");
+            } else {
+                System.out.println("No se encontró proveedor");
+                JOptionPane.showMessageDialog(null, "No se encontró proveedor");
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al eliminar el proveedor: " + e.getMessage());
+        }
+    }
+    
+    public List<Proveedor> Proveedores(String txt,boolean bol){
         proveedores=null;
-        sql="SELECT * FROM proveedor";
+        sql="SELECT * FROM proveedor WHERE rasonSocial LIKE '%"+txt+"%' AND estado=?";
         try {
             proveedores=new ArrayList<>();
             PreparedStatement ps = con.prepareStatement(sql);
+            ps.setBoolean(1, bol);
             ResultSet rs=ps.executeQuery();
             while(rs.next()){
-                proveedores.add(new Proveedor(rs.getInt("idProveedor"),rs.getString("rasonSocial"),rs.getString("domicilio"),rs.getLong("telefono")));
+                proveedores.add(new Proveedor(rs.getInt("idProveedor"),rs.getLong("telefono"),rs.getString("rasonSocial"),rs.getString("domicilio"),rs.getBoolean("estado")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(ProveedorData.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,4 +125,20 @@ public class ProveedorData {
         return proveedores;
     }
     
+    public List<Proveedor> ProveedoresTodos(String txt){
+        proveedores=null;
+        sql="SELECT * FROM proveedor WHERE rasonSocial LIKE '%"+txt+"%'";
+        try {
+            proveedores=new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                proveedores.add(new Proveedor(rs.getInt("idProveedor"),rs.getLong("telefono"),rs.getString("rasonSocial"),rs.getString("domicilio"),rs.getBoolean("estado")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProveedorData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        sql=null;
+        return proveedores;
+    }
 }
